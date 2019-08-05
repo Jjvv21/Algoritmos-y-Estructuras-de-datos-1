@@ -16,8 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	public static final String SEPARATOR=";";
-	public static final String QUOTE="\"";
+	public static final String SPLIT=";";
+	public static final String barr="\"";
 
     public static void main(String[] args) {    	
         launch(args);
@@ -37,21 +37,21 @@ public class Main extends Application {
         
         BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("files/notas.csv"));
+			br = new BufferedReader(new FileReader("files/MasDeDosColumnas.csv"));
 			String line = br.readLine();
 			try {
-				String [] Archivo = line.split(SEPARATOR);
+				String [] Archivo = line.split(SPLIT);
 				@SuppressWarnings("unused")
 				String ArchivoVacio = Archivo[0];
 				
 			}catch(Exception g) {
-				System.err.println("El archivo está vacio "+g.getMessage());
+				System.err.println("El archivo está vacio" + g.getMessage());
 				JOptionPane.showMessageDialog(null, "el archivo esta vacio!", "ERROR",JOptionPane.ERROR_MESSAGE);
 			}
 			while (null!=line) {
-				String [] fields = line.split(SEPARATOR);
+				String [] fields = line.split(SPLIT);
 	 	        System.out.println(Arrays.toString(fields));
-	 	        fields = removeTrailingQuotes(fields);
+	 	        fields = removeTrailingbarrs(fields);
 	 	        String Nombre = fields[0];
 	 	        String Segundo = fields[1];
 	 	        try {
@@ -94,10 +94,10 @@ public class Main extends Application {
     }
 
 
-	private static String[] removeTrailingQuotes(String[] fields) {
+	private static String[] removeTrailingbarrs(String[] fields) {
 	      String result[] = new String[fields.length];
 	      for (int i=0;i<result.length;i++){
-	         result[i] = fields[i].replaceAll("^"+QUOTE,"").replaceAll(QUOTE+"$","");
+	         result[i] = fields[i].replaceAll("^"+barr,"").replaceAll(barr+"$","");
 	      }
 	      return result;
 	   }
