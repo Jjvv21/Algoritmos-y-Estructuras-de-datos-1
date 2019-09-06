@@ -1,0 +1,1 @@
+es la habilidad de poder tratar al hijo como el padre y tambien puedo remplazar los comportamientos de mi padre.  
